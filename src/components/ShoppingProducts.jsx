@@ -1,18 +1,26 @@
 import React from "react";
+import { useState } from "react";
 
-function ShoppingProducts() {
+function ShoppingProducts({ id, name }) {
+  console.log(name, id);
+  const [count, setCount] = useState(1);
   return (
     <table>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>Coffe</td>
-          <td>2</td>
+          <td>{id}</td>
+          <td>{name}</td>
+          <td>{count}</td>
           <td>
-            <button>+</button>
-            <button>-</button>
+            <button onClick={() => setCount(count + 1)}>+</button>
+            <button
+              disabled={count === 0 ? true : false}
+              onClick={() => setCount(count - 1)}
+            >
+              -
+            </button>
           </td>
-          <td>1000$</td>
+          <td>{id % 2 === 0 ? id * 300 : id * 200}$</td>
         </tr>
       </tbody>
     </table>
