@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../context/Context";
 
 function ShoppingItems() {
-  const url = useContext(Context);
+  const { url, createProducts } = useContext(Context);
+  const [allow, setAllow] = useState(false);
 
   const flattened = url.flatMap((num) => num);
 
@@ -19,7 +20,13 @@ function ShoppingItems() {
               </h4>
               <p>{el.id % 2 === 0 ? el.id * 300 : el.id * 200}$</p>
             </div>
-            <button>{el.origin.name}</button>
+            <button
+              onClick={() => {
+                createProducts(el.id, true);
+              }}
+            >
+              {el.origin.name}
+            </button>
           </div>
         ))}
     </section>

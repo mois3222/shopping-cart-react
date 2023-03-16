@@ -2,10 +2,10 @@ import ShoppingItems from "./ShoppingItems";
 
 function ShoppingCatalog() {
   return (
-    <section>
+    <article>
       <h1>DOM - Fragment</h1>
       <ShoppingItems />
-    </section>
+    </article>
   );
 }
 
